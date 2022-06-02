@@ -1,0 +1,48 @@
+<div
+  *ngIf="activity.status; else remove"
+  class="flex relative p-4 shadow-1 border-round-md py-2 w-full justify-content-between align-items-center"
+>
+  <div class="flex flex-column">
+    <p-chip
+      label="{{ activity.deliveryDate | date: 'dd/MM/yyyy hh:mm' }}"
+      styleClass="mr-2 custom-chip"
+    ></p-chip>
+    <p class="line-through">{{ activity.name }}</p>
+  </div>
+
+  <div class="flex gap-3">
+    <button
+      (click)="complete(activity.id)"
+      pButton
+      type="button"
+      class="p-button-sm p-button-success"
+    >
+      Concluir
+    </button>
+  </div>
+</div>
+
+<ng-template #remove>
+  <div
+    class="relative flex p-4 bg-gray-300 shadow-1 border-round-md py-2 w-full justify-content-between align-items-center"
+  >
+    <div class="flex flex-column">
+      <p-chip
+        label="{{ activity.deliveryDate | date: 'dd/MM/yyyy hh:mm' }}"
+        styleClass="mr-2 custom-chip absolute"
+      ></p-chip>
+      <p class="line-through">{{ activity.name }}</p>
+    </div>
+
+    <div class="flex gap-3">
+      <button
+        (click)="delete(activity.id)"
+        pButton
+        type="button"
+        class="p-button-sm p-button-danger"
+      >
+        Excluir
+      </button>
+    </div>
+  </div>
+</ng-template>

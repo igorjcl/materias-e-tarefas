@@ -1,0 +1,57 @@
+<div class="flex flex-column">
+  <form
+    [formGroup]="form"
+    class="flex justify-content-between pb-2 gap-2 mb-2 align-items-center"
+  >
+    <div class="field w-7">
+      <label for="name" class="block">Tarefa</label>
+      <input
+        placeholder="Descrição da tarefa"
+        formControlName="name"
+        type="text"
+        pInputText
+        class="w-full"
+        id="name"
+      />
+    </div>
+
+    <div class="field w-4">
+      <label for="time" class="block">Data final</label>
+      <p-calendar
+        class="w-full"
+        placeholder="Data final"
+        formControlName="deliveryDate"
+        [showTime]="true"
+        [showSeconds]="true"
+        inputId="time"
+        appendTo="body"
+      ></p-calendar>
+    </div>
+
+    <div class="flex justify-content-center align-items-center">
+      <button
+        pButton
+        [disabled]="form.invalid"
+        type="button"
+        label="Adicionar"
+        class="p-button-sm p-button-info mt-2"
+        (click)="addActivity()"
+      ></button>
+    </div>
+  </form>
+
+  <div
+    class="flex overflow-auto flex-column max-h-5 gap-4 pt-4"
+    *ngIf="!!(editedSchoolSubjects$ | async)"
+  >
+    <ng-container
+      *ngFor="let activity of (editedSchoolSubjects$ | async).activities"
+    >
+      <app-activity
+        (completeEvent)="complete($event)"
+        (deleteEvent)="delete($event)"
+        [activity]="activity"
+      ></app-activity>
+    </ng-container>
+  </div>
+</div>

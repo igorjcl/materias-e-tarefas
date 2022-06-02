@@ -1,0 +1,14 @@
+.banner {
+  background: url(../../assets/images/vector.svg) no-repeat;
+  background-color: #fdfdfd;
+  background-size: 75%;
+  background-position: center center;
+}
+
+.form {
+  background-color: #f1f1f169;
+
+  > button {
+    width: 100%;
+  }
+}

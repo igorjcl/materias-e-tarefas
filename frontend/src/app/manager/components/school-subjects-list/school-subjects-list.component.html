@@ -1,0 +1,55 @@
+<p-toast></p-toast>
+
+<div class="flex flex-column gap-4 justify-content-center">
+  <div class="py-5 px-2 flex justify-content-between align-items-center">
+    <h1>Matérias</h1>
+
+    <a
+      [routerLink]="['criar']"
+      pButton
+      type="button"
+      label="Criar Uma Materia"
+      class="p-button-info no-underline p-button-md p-button-rounded p-button-outlined"
+    ></a>
+  </div>
+
+  <ng-container
+    *ngFor="let schoolSubjects of schoolSubjects$ | async; else: notFound"
+  >
+    <div
+      class="school-subjects p-5 bg-white border-round-xl flex shadow-1 justify-content-between align-items-center"
+    >
+      <h2>{{ schoolSubjects.title }}</h2>
+      <div class="flex gap-2">
+        <button
+          pButton
+          type="button"
+          icon="pi pi-eye"
+          class="p-button-sm p-button-rounded p-button-info p-button-outlined"
+          (click)="showSchoolSubjectsView(schoolSubjects)"
+        ></button>
+        <button
+          [routerLink]="[schoolSubjects.id, 'editar']"
+          pButton
+          type="button"
+          icon="pi pi-pencil"
+          class="p-button-sm p-button-rounded p-button-warning p-button-outlined"
+        ></button>
+        <button
+          (click)="delete(schoolSubjects.id)"
+          pButton
+          type="button"
+          icon="pi pi-trash"
+          class="p-button-sm p-button-rounded p-button-danger p-button-outlined"
+        ></button>
+      </div>
+    </div>
+  </ng-container>
+
+  <div
+    class="flex align-items-center justify-content-center"
+    *ngIf="(schoolSubjects$ | async)?.length === 0"
+  >
+    Cadastre uma materia para se organizar
+  </div>
+</div>

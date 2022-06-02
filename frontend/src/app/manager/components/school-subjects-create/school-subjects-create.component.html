@@ -1,0 +1,46 @@
+<p-toast></p-toast>
+
+<div class="flex flex-column gap-4 justify-content-center">
+  <div class="py-5 px-2 flex justify-content-between align-items-center">
+    <h1>Criar Matéria</h1>
+
+    <a
+      [routerLink]="['..']"
+      pButton
+      type="button"
+      label="Listar"
+      class="p-button-info no-underline p-button-md p-button-rounded p-button-outlined"
+    ></a>
+  </div>
+
+  <form
+    [formGroup]="form"
+    class="bg-white flex shadow-2 p-4 border-round-md w-full"
+  >
+    <div class="flex justify-content-center w-full flex-column gap-4">
+      <input
+        formControlName="title"
+        pInputText
+        placeholder="Titulo"
+        class="w-full"
+        type="text"
+      />
+      <div class="flex justify-content-end">
+        <button
+          class="p-button-secondary p-button-sm mr-2"
+          (click)="clear()"
+          pButton
+          label="Limpar"
+          type="button"
+        ></button>
+        <button
+          class="p-button-info p-button-sm"
+          [disabled]="form.invalid"
+          (click)="onSubmit()"
+          pButton
+          label="Cadastrar"
+        ></button>
+      </div>
+    </div>
+  </form>
+</div>

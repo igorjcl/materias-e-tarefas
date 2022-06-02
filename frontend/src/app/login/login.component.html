@@ -1,0 +1,60 @@
+<div class="flex h-full">
+  <div class="flex w-7 banner"></div>
+  <div
+    class="relative form flex w-5 align-items-center justify-content-center flex-column"
+  >
+    <h1 class="mb-4">Login</h1>
+    <form class="flex flex-column gap-4" [formGroup]="form">
+      <span>
+        <input
+          [ngClass]="{
+            'ng-invalid ng-dirty':
+              username?.invalid && (username?.dirty || username?.touched)
+          }"
+          pInputText
+          placeholder="Login"
+          type="text"
+          formControlName="username"
+        />
+        <small
+          *ngIf="username?.invalid && (username?.dirty || username?.touched)"
+          class="p-error block"
+          >Login invalido</small
+        >
+      </span>
+
+      <span>
+        <input
+          [ngClass]="{
+            'ng-invalid ng-dirty':
+              password?.invalid && (password?.dirty || password?.touched)
+          }"
+          pInputText
+          placeholder="Senha"
+          type="password"
+          formControlName="password"
+        />
+        <small
+          *ngIf="password?.invalid && (password?.dirty || password?.touched)"
+          class="p-error block"
+          >Senha invalida</small
+        >
+      </span>
+
+      <button
+        pButton
+        [disabled]="form.invalid"
+        class="button"
+        label="Login"
+        type="button"
+        (click)="onSubmit()"
+      ></button>
+      <a
+        class="text-center mt-3 p-button-outlined p-button-rounded no-underline p-button-sm"
+        [routerLink]="['/registrar']"
+      >
+        Cadastrar
+      </a>
+    </form>
+  </div>
+</div>

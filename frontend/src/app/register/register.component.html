@@ -1,0 +1,81 @@
+<div class="form flex h-full w-full justify-content-center align-items-center">
+  <div
+    class="p-6 bg-white border-round-md shadow-1 flex align-items-center justify-content-center flex-column"
+  >
+    <h1 class="mb-4">Cadastrar</h1>
+    <form class="flex flex-column gap-4" [formGroup]="form">
+      <span>
+        <input
+          [ngClass]="{
+            'ng-invalid ng-dirty':
+              name?.invalid && (name?.dirty || name?.touched)
+          }"
+          pInputText
+          placeholder="Nome"
+          type="text"
+          formControlName="name"
+        />
+        <small
+          *ngIf="name?.invalid && (name?.dirty || name?.touched)"
+          class="p-error block"
+          >Nome invalido</small
+        >
+      </span>
+
+      <span>
+        <input
+          [ngClass]="{
+            'ng-invalid ng-dirty':
+              username?.invalid && (username?.dirty || username?.touched)
+          }"
+          pInputText
+          placeholder="Login"
+          type="text"
+          formControlName="username"
+        />
+        <small
+          *ngIf="username?.invalid && (username?.dirty || username?.touched)"
+          class="p-error block"
+          >Login invalido</small
+        >
+      </span>
+
+      <span>
+        <input
+          [ngClass]="{
+            'ng-invalid ng-dirty':
+              password?.invalid && (password?.dirty || password?.touched)
+          }"
+          pInputText
+          placeholder="Senha"
+          type="password"
+          formControlName="password"
+        />
+        <small
+          *ngIf="password?.invalid && (password?.dirty || password?.touched)"
+          class="p-error block"
+          >Senha invalida</small
+        >
+      </span>
+
+      <button
+        pButton
+        [disabled]="form.invalid"
+        class="button"
+        label="Criar"
+        type="button"
+        (click)="onSubmit()"
+      ></button>
+    </form>
+    <p class="flex align-items-center absolute top-0 mt-5">
+      Faça o Login se ja possui cadastro
+      <a
+        pButton
+        class="ml-3 p-button-outlined p-button-rounded no-underline p-button-sm"
+        [routerLink]="['/login']"
+      >
+        Login
+      </a>
+    </p>
+  </div>
+</div>

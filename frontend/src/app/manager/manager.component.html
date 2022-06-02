@@ -1,0 +1,15 @@
+<main class="main h-full">
+  <header class="flex justify-content-end p-5">
+    <button
+      pButton
+      type="button"
+      label="Sair"
+      class="p-button-danger p-button-sm"
+      (click)="logout()"
+    ></button>
+  </header>
+
+  <section class="m-auto max-w-30rem">
+    <router-outlet></router-outlet>
+  </section>
+</main>

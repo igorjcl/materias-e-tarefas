@@ -1,0 +1,9 @@
+:host ::ng-deep .p-chip.custom-chip {
+  background: var(--primary-color);
+  color: var(--primary-color-text);
+  font-size: .75rem;
+  top: -15px;
+  left: 5px;
+  position: absolute;
+  z-index: 1000;
+}
