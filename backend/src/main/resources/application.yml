@@ -5,7 +5,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     password: postgres
     username: postgres
-    url: jdbc:postgresql://localhost:5432/backend
+    url: jdbc:postgresql://postgres/backend
   jpa:
     hibernate:
       ddl-auto: update
@@ -15,3 +15,4 @@ server:
     include-binding-errors: always
     include-stacktrace: on_param
     include-exception: false
+  port: 8080
